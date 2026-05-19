@@ -1,11 +1,14 @@
-FROM node:22-slim
+FROM node:22-alpine
 
 ENV PORT=8080
+ENV NODE_OPTIONS="--max-old-space-size=256"
+
+RUN npm install -g supergateway@3.4.3 @karakeep/mcp
 
 EXPOSE 8080
 
-CMD npx -y supergateway \
-  --stdio "npx -y @karakeep/mcp" \
+CMD supergateway \
+  --stdio "karakeep-mcp" \
   --outputTransport streamableHttp \
   --port ${PORT} \
   --host 0.0.0.0 \
