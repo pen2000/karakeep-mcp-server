@@ -1,0 +1,17 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[[services.variables]]
+name = "KARAKEEP_API_ADDR"
+description = "KaraKeep server address (e.g. https://cloud.karakeep.app)"
+required = true
+
+[[services.variables]]
+name = "KARAKEEP_API_KEY"
+description = "KaraKeep API key"
+required = true
