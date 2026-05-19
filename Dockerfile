@@ -1,4 +1,4 @@
-FROM supercorp/supergateway:latest
+FROM node:22-slim
 
 ENV PORT=8080
 
