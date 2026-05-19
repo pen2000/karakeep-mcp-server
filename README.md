@@ -2,13 +2,13 @@
 
 [KaraKeep](https://karakeep.app) の MCP サーバーを Railway 上でホストするためのリポジトリです。
 
-[supergateway](https://github.com/supercorp-ai/supergateway) を使って、stdio ベースの `@karakeep/mcp` を SSE (Server-Sent Events) 経由でリモートアクセス可能にします。
+[supergateway](https://github.com/supercorp-ai/supergateway) を使って、stdio ベースの `@karakeep/mcp` を Streamable HTTP 経由でリモートアクセス可能にします。
 
 ## 構成
 
 ```
 Claude (モバイル / Web)
-    ↓ リモートMCP (SSE)
+    ↓ リモートMCP (Streamable HTTP)
 Railway (このリポジトリ / supergateway)
     ↓ stdio
 @karakeep/mcp
@@ -51,10 +51,10 @@ Railway のプロジェクト設定から「Generate Domain」でパブリック
 
 ### Claude.ai (Web / モバイル)
 
-Claude.ai の設定 → 「Model Context Protocol」→ 「Add MCP Server」から以下を入力します。
+Claude.ai の設定 → 「Connectors」→ 「Add custom connector」から以下を入力します。
 
 ```
-URL: https://<your-railway-domain>/sse
+URL: https://<your-railway-domain>/mcp
 ```
 
 ### Claude Desktop
@@ -69,8 +69,8 @@ URL: https://<your-railway-domain>/sse
       "args": [
         "-y",
         "supergateway",
-        "--sse",
-        "https://<your-railway-domain>/sse"
+        "--streamableHttp",
+        "https://<your-railway-domain>/mcp"
       ]
     }
   }

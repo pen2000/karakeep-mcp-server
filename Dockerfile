@@ -6,6 +6,7 @@ EXPOSE 8080
 
 CMD npx -y supergateway \
   --stdio "npx -y @karakeep/mcp" \
+  --outputTransport streamableHttp \
   --port ${PORT} \
   --host 0.0.0.0 \
   --healthEndpoint /health
