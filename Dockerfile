@@ -4,7 +4,7 @@ ENV PORT=8080
 
 RUN npm install -g supergateway@3.4.3 @karakeep/mcp
 
-ENV NODE_OPTIONS="--max-old-space-size=128 --optimize-for-size"
+ENV NODE_OPTIONS="--max-old-space-size=128"
 
 EXPOSE 8080
 
