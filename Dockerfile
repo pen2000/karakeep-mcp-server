@@ -1,7 +1,7 @@
 FROM node:22-alpine
 
 ENV PORT=8080
-ENV NODE_OPTIONS="--max-old-space-size=256"
+ENV NODE_OPTIONS="--max-old-space-size=128 --optimize-for-size"
 
 RUN npm install -g supergateway@3.4.3 @karakeep/mcp
 
